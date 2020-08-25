@@ -58,19 +58,23 @@
 
     <script>
         const overskrift = document.querySelector("h1");
-        overskrift.textContent = "Billeder";
+        overskrift.textContent = "Billede Galleri";
         console.log(overskrift.textContent);
 
         const undertitel = document.querySelector("h2");
+        undertitel.textContent = "Billeder";
         console.log(undertitel.textContent);
 
-        const article1 = document.querySelector("article");
+        const article1 = document.querySelector("article h3");
+        article1.textContent = "Første Billederække";
         console.log(article1.textContent);
 
-        const article2 = document.querySelector("article:nth-child(3)");
+        const article2 = document.querySelector("article:nth-child(3) h3");
+        article2.textContent = "Anden Billederække";
         console.log(article2.textContent);
 
         const footer = document.querySelector("footer");
+        footer.textContent = "Lavet af Signe Pedersen";
         console.log(footer.textContent);
 
     </script>
