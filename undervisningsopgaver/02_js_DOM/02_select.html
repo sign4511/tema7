@@ -36,14 +36,14 @@
 
             <h2>Undertitel</h2>
             <article>
-                <img src="https://placeimg.com/400/300/any" alt="">
+                <img src="https://placeimg.com/400/300/any" alt="random billede">
                 <h3>Article 1</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sapiente deleniti, optio, ex harum molestias veritatis porro repellendus sunt, exercitationem suscipit delectus laborum quo nemo, quaerat esse facilis aut. Ex!</p>
 
             </article>
 
             <article>
-                <img src="https://placeimg.com/400/300/any" alt="">
+                <img src="https://placeimg.com/400/300/any" alt="random billede">
                 <h3>Article 2</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquam neque ipsa qui, consectetur vel. Nihil, minima, laudantium. Vel nisi odit accusantium quisquam, sit quos, maiores necessitatibus dolorum aliquam soluta.</p>
             </article>
@@ -58,14 +58,20 @@
 
     <script>
         const overskrift = document.querySelector("h1");
-        overskrift.textContent;
+
         console.log(overskrift.textContent);
 
         const undertitel = document.querySelector("h2");
-        undertitel.textContent;
         console.log(undertitel.textContent);
 
-        const article = document.querySelector("h3");
+        const article1 = document.querySelector("article");
+        console.log(article1.textContent);
+
+        const article2 = document.querySelector("article:nth-child(3)");
+        console.log(article2.textContent);
+
+        const footer = document.querySelector("footer");
+        console.log(footer.textContent);
 
     </script>
 </body>
