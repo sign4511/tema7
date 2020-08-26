@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1>Test, må i date???</h1>
+    <p>Intast din egen alder:</p>
+    <input type="text" id="min_alder">
+    <p>Intast din dates alder:</p>
+    <input type="text" id="din_dates_alder">
+
+    <button>klik og beregn</button>
+
+    <script>
+        document.querySelector("button").addEventListener("click", buttonClick);
+
+        function buttonClick() {
+            let minAlder = document.querySelector("#min_alder").value;
+            let dinDatesAlder = document.querySelector("#din_dates_alder").value;
+            let nedreGrænse = minAlder / 2 + 7;
+            let øvreGrænse = (minAlder - 7) * 2;
+
+            if (minAlder > 15 && dinDatesAlder > 15) {
+                if (dinDatesAlder >= nedreGrænse && øvreGrænse >= dinDatesAlder) {
+                    console.log(" reglen er overholdt så dater i bare!");
+                } else {
+                    console.log("reglen er ikke overholdt, i må ikke date!");
+                }
+
+            } else {
+                console.log("du er enten mindreårig eller pædofil, skrid fra siden!")
+            }
+        }
+
+    </script>
+</body>
+
+</html>
