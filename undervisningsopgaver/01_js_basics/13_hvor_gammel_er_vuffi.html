@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <script>
+        //gammel Form
+        let hundeliv = 7.5;
+        let menneskealder = 7;
+        let hundealder = hundeliv * menneskealder;
+        let resultatGammelForm = `hundens alder er efter den gamle metode ${hundeliv} gange ${menneskealder}. så hunden er ${hundealder}`;
+        console.log(resultatGammelForm);
+
+
+        //ny form
+        let hundeliv1 = 12;
+        let denNyeFomel = Math.round(16 * Math.log(hundeliv1) + 31);
+        let resultatNyFormel = `hundens alder er ${hundeliv1} hundeliv så efter den nye metode er hundens alder ${denNyeFomel}`;
+        console.log(resultatNyFormel);
+
+    </script>
+</body>
+
+</html>
