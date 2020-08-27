@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    body {
+        color: burlywood;
+    }
+
+    #display {
+        width: 20vw;
+        height: 20vw;
+        border: 1px solid silver;
+        margin: 7vw;
+        padding: 1vw;
+    }
+
+</style>
+
+<body>
+    <div id="display"></div>
+
+
+    <script>
+        let playlist = ["Sound off music", "Dansing in the rain", "what a wonderful world", "Numb", "Singing in the rain", "Young blood", "Take away", "Freeking me out", "Graveyard"];
+        playlist.forEach(sang => {
+            document.querySelector("#display").innerHTML += `${sang}<br>`;
+        })
+
+    </script>
+</body>
+
+</html>
