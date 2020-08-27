@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-objekter</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        article {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+
+    </section>
+
+    <template>
+        <article id="dyr">
+            <h2></h2>
+            <img src="" alt="">
+            <p class="art"></p>
+            <p class="sted"></p>
+        </article>
+    </template>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("DOM content er loaded");
+
+
+            let dyr = [{
+                "navn": "gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": " fra svinefarmen"
+            }, {
+                "navn": "frø",
+                "type": "amfibie",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+                "levested": "fra søen"
+            }, {
+                "navn": "ræv",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+                "levested": "fra skoven"
+            }, {
+                "navn": "sild",
+                "type": "fisk",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+                "levested": "fra havet"
+            }, {
+                "navn": "krokodille",
+                "type": "krybdyr",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+                "levested": "fra floden"
+            }]
+
+            let temp = document.querySelector("template");
+            let container = document.querySelector("section");
+            dyr.forEach(etDyr => {
+
+                let klon = temp.cloneNode(true).content;
+                klon.querySelector("h2").textContent = etDyr.navn;
+                klon.querySelector(".art").textContent = "type: " + etDyr.type;
+                klon.querySelector(".sted").textContent = "Levested: " +
+                    etDyr.levested;
+                klon.querySelector("img").src = etDyr.billede;
+                container.appendChild(klon);
+
+            })
+
+        }
+
+    </script>
+
+</body>
+
+</html>
