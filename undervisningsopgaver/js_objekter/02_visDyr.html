@@ -10,28 +10,31 @@
 
 <body>
     <article>
-        <p>Dyr: gris, type: pattedyr, levested: svinefarm</p>
 
-        <img src="http://mabe-kea.dk/E19/pics/pig.png" alt="gris">
 
     </article>
 
 
 
     <script>
+        let article;
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
             console.log("DOM content er loaded");
-        }
+            article = document.querySelector("article");
 
-        let dyr = {
-            "navn": "gris",
-            "type": "pattedyr",
-            "billede": "http://mabe-kea.dk/E19/pics/pig.png",
-            "levested": "svinefarm"
+
+
+            let dyr = {
+                "navn": "gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": "svinefarm"
+            }
+            console.log(`dyr:${dyr.navn}type:${dyr.type} levested:${dyr.levested} billede:${dyr.billede}`);
+            article.innerHTML = `dyr:${dyr.navn}type:${dyr.type} levested:${dyr.levested} <img src="${dyr.billede}">`;
         }
-        console.log(`dyr:${dyr.navn}type:${dyr.type} levested:${dyr.levested} billede:${dyr.billede}`);
 
     </script>
 
