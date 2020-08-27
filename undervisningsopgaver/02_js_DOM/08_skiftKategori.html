@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        img {
+            width 100%;
+        }
+
+        h1,
+        footer {
+            text-align: center;
+        }
+
+        header,
+        footer {
+            padding: 10px 0;
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+
+            <article>
+                <img src="https://placeimg.com/400/300/any" alt="">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sapiente deleniti, optio, ex harum molestias veritatis porro repellendus sunt, exercitationem suscipit delectus laborum quo nemo, quaerat esse facilis aut. Ex!</p>
+
+            </article>
+
+            <article>
+                <img src="https://placeimg.com/400/300/any" alt="">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquam neque ipsa qui, consectetur vel. Nihil, minima, laudantium. Vel nisi odit accusantium quisquam, sit quos, maiores necessitatibus dolorum aliquam soluta.</p>
+            </article>
+
+        </section>
+
+    </main>
+    <footer>
+        <p>This is the footer</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const kategorier = ["animals", "arch", "people", "nature", "tech"];
+
+        function start() {
+            console.log("DOM content er loaded");
+        }
+
+
+        const picture2 = document.querySelector("article:nth-child(2) img");
+
+        picture2.addEventListener("click", skiftBillede);
+
+        function skiftBillede() {
+            console.log("click");
+            let tal = Math.round(Math.random() * 4);
+
+            pic2.src = "https://placeimg.com/400/300/" + kategorier[tal];
+            pic2.alt = kategorier[tal];
+            console.log(pic2);
+        }
+
+
+
+        const overskrift = document.querySelector("h1");
+        overskrift.textContent = "Billede Galleri";
+        console.log(overskrift.textContent);
+
+        const undertitel = document.querySelector("h2");
+        undertitel.textContent = "Billeder";
+        console.log(undertitel.textContent);
+
+        const article1 = document.querySelector("article h3");
+        article1.textContent = "Første Billederække";
+        console.log(article1.textContent);
+
+        const article2 = document.querySelector("article:nth-child(2) h3");
+        article2.textContent = "Anden Billederække";
+        console.log(article2.textContent);
+
+        const footer = document.querySelector("footer");
+        footer.textContent = "Lavet af Signe Pedersen";
+        console.log(footer.textContent);
+
+        const pic1 = document.querySelector("article:nth-child(1) img");
+        pic1.src = "https://placeimg.com/400/300/arch";
+        pic1.alt = "random arkitekt billede";
+        console.log(pic1);
+
+        const pic2 = document.querySelector("article:nth-child(2) img");
+        pic2.src = "https://placeimg.com/400/300/arch";
+        pic2.alt = "random arkitekt billede";
+        console.log(pic2);
+
+        let mainSection = document.querySelector("section");
+
+        //nyt artikel element
+        let newArticle = document.createElement("article");
+
+        //nyt billede
+        let img = document.createElement("img");
+
+        //nyt h# element
+        let titel = document.createElement("h3");
+
+        //ny brødtekst
+        let paragraf = document.createElement("p");
+
+        //indsæt billede
+        img.src = "https://placeimg.com/400/300/arch";
+
+        //tekst til overskriften
+        let titelTekst = document.createTextNode("Article 3");
+
+
+        //indsæt tekst i overskrift
+        titel.appendChild(titelTekst);
+
+        //indsæt brødtekst i artikel 3
+        let para = document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquam neque ipsa qui, consectetur vel. Nihil, minima, laudantium. Vel nisi odit accusantium quisquam, sit quos, maiores necessitatibus dolorum aliquam soluta.");
+
+
+        //tilføj overskrift til article
+        newArticle.appendChild(titel);
+
+        //tilføj ny brødtekst
+        newArticle.appendChild(para);
+
+        newArticle.appendChild(img);
+
+        //tilføj article til section
+        mainSection.appendChild(newArticle);
+
+    </script>
+</body>
+
+</html>
