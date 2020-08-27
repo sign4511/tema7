@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-objekter</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <article>
+
+
+    </article>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("DOM content er loaded");
+
+
+
+            let dyr = [{
+                "navn": "gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": " fra svinefarmen"
+            }, {
+                "navn": "frø",
+                "type": "reptil",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+                "levested": "fra søen"
+            }, {
+                "navn": "ræv",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+                "levested": "fra skoven"
+            }, {
+                "navn": "sild",
+                "type": "fisk",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+                "levested": "fra havet"
+            }, {
+                "navn": "krokodille",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+                "levested": "fra amazonas"
+            }]
+
+
+            let elm = document.querySelector("article");
+            dyr.forEach(etDyr => {
+                console.log(etDyr);
+                elm.innerHTML += `<p>Navn: ${etDyr.navn}, ${etDyr.type}, ${etDyr.levested}</p> `
+
+            })
+
+        }
+
+    </script>
+
+</body>
+
+</html>
