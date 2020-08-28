@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 5px;
+            max-width: 1220px;
+            margin: 0 auto;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+
+        article {
+            border: 2px solid #000;
+            padding: 8px;
+            border-radius: 20px;
+            background: lightgray;
+        }
+
+        h2 {
+            font-family: sans-serif;
+        }
+
+
+        p {
+            font-family: sans-serif;
+            line-height: 25px;
+
+        }
+
+        h1 {
+            text-align: center;
+            font-family: inherit;
+            color: black;
+            padding: 30px;
+        }
+
+
+        @media screen and (min-width:768px) {}
+    </style>
+</head>
+<h1>ET VILDT TEAM</h1>
+
+<body>
+    <section>
+
+    </section>
+
+    <template>
+        <article id="dyr">
+
+            <h2 class="navn"></h2>
+            <img src="" alt="">
+            <p class="køn"></p>
+            <!--<p class="alder"></p>
+<p class="religion"></p>
+<p class="hobby"></p>
+<p class="kæledyr"></p>
+<p class="job"></p>
+<p class="by"></p>
+<p class="land"></p>-->
+
+        </article>
+    </template>
+
+
+
+    <script>
+        let temp = document.querySelector("template");
+        let container = document.querySelector("section");
+
+        const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+
+        async function hentdata() {
+            const resultat = await fetch(link);
+            const json = await resultat.json();
+            vis(json);
+        }
+
+        function vis(personer) {
+
+            console.log(personer);
+
+            personer.feed.entry.forEach(person => {
+
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".navn").textContent = person.gsx$navn.$t + " " + person.gsx$efternavn.$t;
+                klon.querySelector("img").src = person.gsx$billede.$t;
+                klon.querySelector(".køn").innerHTML = "Køn: " + person.gsx$køn.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "Alder: " + person.gsx$alder.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "Religion: " + person.gsx$religion.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "Hobby: " + person.gsx$hobby.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "Kæledyr: " + person.gsx$kæledyr.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "Job: " + person.gsx$job.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "By: " + person.gsx$by.$t + "<br>";
+                klon.querySelector(".køn").innerHTML += "Land: " + person.gsx$land.$t + "<br>";
+                container.appendChild(klon);
+
+            });
+
+        }
+
+        hentdata();
+    </script>
+
+</body></html>
