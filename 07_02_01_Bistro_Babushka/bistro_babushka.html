@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Bebas Neue', cursive;
+            padding: 100px;
+            color: white;
+            border-color: black;
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', cursive;
+            text-align: center;
+            padding: 20px;
+            font-size: 3rem;
+        }
+
+        h3 {
+
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            line-height: 25px;
+        }
+
+
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 5px;
+            max-width: 1220px;
+            margin: 0 auto;
+
+        }
+
+        article {
+            border: 2px solid #000;
+            padding: 8px;
+            border-radius: 5px;
+            /*background: lightgray;*/
+        }
+
+        button {
+            font-family: 'Bebas Neue', cursive;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            grid-gap: 10px;
+        }
+
+        .valgt {
+            background-color: goldenrod;
+        }
+
+        #splash {
+            width: 100%;
+            height: 50vh;
+            max-width: none;
+            background-image: url(bistro_babushka.jpg);
+            background-color: black;
+            background-size: cover;
+            background-position: 0% 100%;
+
+        }
+
+
+        @media screen and (min-width:768px) {}
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <header id="splash">
+            <h1>VELKOMMEN TIL BISTRO BABUSHKA</h1>
+        </header>
+
+        <header>
+            <h2>Drikkevarer</h2>
+            <nav>
+                <button class="filter" data-retter="desserter">Desserter</button>
+                <button class="filter valgt" data-retter="drikkevarer">Drikkevarer</button>
+                <button class="filter" data-retter="forretter">Forretter</button>
+                <button class="filter" data-retter="sideorders">Sideorders</button>
+                <button class="filter" data-retter="hovedretter">Hovedretter</button>
+            </nav>
+        </header>
+
+
+        <section>
+
+        </section>
+
+    </main>
+
+    <template>
+        <article>
+
+            <h3 class="navn"></h3>
+            <img src="" alt="">
+            <p class="pris"></p>
+            <p class=" kort"></p>
+
+
+        </article>
+    </template>
+
+
+
+    <script>
+        let json;
+        let filter = "drikkevarer";
+        let temp = document.querySelector("template");
+        let container = document.querySelector("section");
+
+        const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+
+        async function hentdata() {
+            const resultat = await fetch(link);
+            json = await resultat.json();
+            addEventListenerToButtons();
+            vis(json);
+        }
+
+        function vis(retter) {
+
+
+            container.innerHTML = "";
+            retter.feed.entry.forEach(ret => {
+                console.log(ret);
+                if (filter == ret.gsx$kategori.$t) {
+
+                    const klon = temp.cloneNode(true).content;
+                    klon.querySelector(".navn").textContent = ret.gsx$navn.$t;
+                    klon.querySelector(".pris").textContent = ret.gsx$pris.$t;
+                    klon.querySelector(".kort").textContent = ret.gsx$kort.$t;
+                    klon.querySelector("img").src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
+
+                    container.appendChild(klon);
+                }
+            });
+
+        }
+
+        function addEventListenerToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        }
+
+        function filterBTNs() {
+            filter = this.dataset.retter;
+            document.querySelector("h2").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+
+                btn.classList.remove("valgt");
+
+            })
+
+            this.classList.add("valgt");
+            vis(json);
+        }
+
+        hentdata();
+    </script>
+
+</body></html>
