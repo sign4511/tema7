@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 5px;
+
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 1220px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+
+        article {
+            border: 2px solid #000;
+            padding: 8px;
+            border-radius: 20px;
+            background: lightgray;
+        }
+
+        h2 {
+            font-family: sans-serif;
+        }
+
+
+        p {
+            font-family: sans-serif;
+            line-height: 25px;
+
+        }
+
+        h1 {
+            text-align: center;
+            font-family: inherit;
+            color: black;
+            padding: 30px;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 10px;
+
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            grid-gap: 10px;
+        }
+
+        .valgt {
+            background-color: greenyellow;
+        }
+
+
+
+
+        @media screen and (min-width:768px) {}
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <h1>ET VILDT TEAM</h1>
+        <header>
+            <button class="filter" data-køn="k">Kvinder</button>
+            <button class="filter" data-køn="m">Mænd</button>
+            <button class="filter" data-køn="andet">Andet</button>
+            <button class="filter valgt" data-køn="alle">Alle</button>
+        </header>
+
+        <section>
+
+        </section>
+    </main>
+
+    <template>
+        <article id="dyr">
+
+            <h2 class="navn"></h2>
+            <img src="" alt="">
+            <p class="køn"></p>
+
+        </article>
+    </template>
+
+
+
+    <script>
+        let json;
+        let filter = "k";
+        let temp = document.querySelector("template");
+        let container = document.querySelector("section");
+
+        const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+
+        async function hentdata() {
+            const resultat = await fetch(link);
+            json = await resultat.json();
+            addEventListenerToButtons();
+            vis(json);
+        }
+
+        function vis(personer) {
+
+            console.log(personer);
+            container.innerHTML = "";
+            personer.feed.entry.forEach(person => {
+
+                if (filter == "alle" || filter == person.gsx$køn.$t.toLowerCase()) {
+
+                    const klon = temp.cloneNode(true).content;
+                    klon.querySelector(".navn").textContent = person.gsx$navn.$t + " " + person.gsx$efternavn.$t;
+                    klon.querySelector("img").src = person.gsx$billede.$t;
+                    klon.querySelector(".køn").innerHTML = "Køn: " + person.gsx$køn.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "Alder: " + person.gsx$alder.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "Religion: " + person.gsx$religion.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "Hobby: " + person.gsx$hobby.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "Kæledyr: " + person.gsx$kæledyr.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "Job: " + person.gsx$job.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "By: " + person.gsx$by.$t + "<br>";
+                    klon.querySelector(".køn").innerHTML += "Land: " + person.gsx$land.$t + "<br>";
+                    container.appendChild(klon);
+                }
+            });
+
+        }
+
+        function addEventListenerToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        }
+
+        function filterBTNs() {
+            filter = this.dataset.køn;
+            vis(json);
+        }
+
+        hentdata();
+    </script>
+
+</body></html>
