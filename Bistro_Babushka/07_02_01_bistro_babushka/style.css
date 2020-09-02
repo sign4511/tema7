@@ -1,0 +1,150 @@
+ * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+ }
+
+ img {
+     max-width: 100%;
+ }
+
+ h1 {
+     text-align: center;
+     font-family: 'Bebas Neue', cursive;
+     color: white;
+     border-color: black;
+     font-size: 4rem;
+     text-shadow: 2px 2px goldenrod;
+ }
+
+ h2 {
+     font-family: 'Bebas Neue', cursive;
+     text-align: center;
+     padding: 10px;
+     font-size: 3rem;
+     color: goldenrod;
+ }
+
+ h3 {
+     font-family: 'Bebas Neue', cursive;
+     font-size: 2rem;
+ }
+
+ p {
+     font-family: 'Asap Condensed', sans-serif;
+     line-height: 25px;
+ }
+
+ body {
+     background-color: black;
+ }
+
+ #liste {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     grid-gap: 5px;
+     max-width: 1220px;
+     margin: 0 auto;
+ }
+
+ article {
+     border: 2px solid #000;
+     padding: 10px;
+     border-radius: 6px;
+     background: white;
+ }
+
+ button {
+     font-family: 'Bebas Neue', cursive;
+     padding: 10px;
+     border-radius: 6px;
+     font-size: 1rem;
+     background-color: white;
+ }
+
+ nav {
+     display: flex;
+     justify-content: center;
+     padding: 40px;
+     grid-gap: 10px;
+ }
+
+ .valgt {
+     background-color: goldenrod;
+ }
+
+ #splash {
+     display: grid;
+     margin: 0 auto;
+     width: 100%;
+ }
+
+ #popup {
+     position: fixed;
+     left: 0;
+     top: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, .8);
+     display: none;
+ }
+
+ #popup article {
+     display: flex;
+     flex-wrap: nowrap;
+     position: relative;
+     width: 80vw;
+     height: 80vh;
+     margin: 4rem auto;
+     border-radius: 25px;
+     padding: 30px;
+     background-color: white;
+ }
+
+ #luk {
+     position: absolute;
+     top: 1%;
+     right: 1%;
+     background-color: white;
+     color: black;
+     border-radius: 10px;
+     cursor: pointer;
+ }
+
+ #popup img {
+     width: 60%;
+ }
+
+ #popup div {
+     padding: 10px;
+ }
+
+ /*ved godt jeg har lavet det web first..*/
+
+ @media(max-width:545px) {
+
+     #popup img {
+         width: 100%;
+     }
+
+     #popup article {
+         flex-wrap: wrap;
+     }
+
+     nav {
+         flex-wrap: wrap;
+     }
+
+     h1 {
+         font-size: 2.5rem;
+     }
+
+     button {
+         font-size: 1rem;
+     }
+
+     h2 {
+         font-size: 2rem;
+     }
+
+ }
