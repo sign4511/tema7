@@ -5,60 +5,60 @@
  }
 
  img {
-     max-width: 100%;
+     width: 100%;
  }
 
  h1 {
      text-align: center;
-     font-family: 'Bebas Neue', cursive;
-     color: white;
-     border-color: black;
-     font-size: 4rem;
-     text-shadow: 2px 2px goldenrod;
+     font-family: 'Open Sans', sans-serif;
+     padding: 20px;
+     background-color: lightgray;
  }
 
  h2 {
-     font-family: 'Bebas Neue', cursive;
+     font-family: 'Open Sans', sans-serif;
      text-align: center;
      padding: 10px;
-     font-size: 3rem;
-     color: goldenrod;
+     color:
  }
 
  h3 {
-     font-family: 'Bebas Neue', cursive;
-     font-size: 2rem;
+     font-family: 'Open Sans', sans-serif;
+     padding-bottom: 10px;
  }
 
  p {
-     font-family: 'Asap Condensed', sans-serif;
+     font-family: 'Open Sans', sans-serif;
      line-height: 25px;
  }
 
  body {
-     background-color: black;
+     background-color: #efeded;
+ }
+
+ article img {
+     border-radius: 8px;
  }
 
  #liste {
      display: grid;
      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-     grid-gap: 5px;
+     grid-gap: 10px;
      max-width: 1220px;
      margin: 0 auto;
  }
 
  article {
-     border: 2px solid #000;
+     border: 1px solid #000;
      padding: 10px;
-     border-radius: 6px;
+     border-radius: 8px;
      background: white;
  }
 
  button {
-     font-family: 'Bebas Neue', cursive;
-     padding: 10px;
-     border-radius: 6px;
-     font-size: 1rem;
+     font-family: padding-bottom: 10px;
+     padding: 8px;
+     border-radius: 8px;
      background-color: white;
  }
 
@@ -70,7 +70,7 @@
  }
 
  .valgt {
-     background-color: goldenrod;
+     background-color: lightgray;
  }
 
  #splash {
@@ -113,6 +113,7 @@
 
  #popup img {
      width: 60%;
+     border-radius: 8px;
  }
 
  #popup div {
@@ -133,18 +134,6 @@
 
      nav {
          flex-wrap: wrap;
-     }
-
-     h1 {
-         font-size: 2.5rem;
-     }
-
-     button {
-         font-size: 1rem;
-     }
-
-     h2 {
-         font-size: 2rem;
      }
 
  }
